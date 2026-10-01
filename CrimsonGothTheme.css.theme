@@ -1,0 +1,329 @@
+/**
+ * @name Crimson Gothic
+ * @description Tema neagra cu rosu-sange, panouri transparente peste un fundal anime. Inspirata de KukkiHub.
+ * @author Cookie
+ * @version 1.0.0
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+
+:root {
+  /* ===== SCHIMBA ASTA: link direct catre imaginea ta (imgur / Discord CDN) ===== */
+  --cg-bg-image: url("https://i.imgur.com/0cIBeUS.png");
+
+  --cg-blood: #d4163c;
+  --cg-crimson: #8f0f2a;
+  --cg-ink: #080204;
+  --cg-wine: #1b060c;
+  --cg-rose: #ecd0d6;
+  --cg-dim: #9a6470;
+
+  --cg-panel: rgba(12, 3, 6, 0.72);
+  --cg-panel-solid: #0d0306;
+  --cg-line: rgba(212, 22, 60, 0.38);
+  --cg-glow: 0 0 14px rgba(212, 22, 60, 0.35);
+  --cg-radius: 14px;
+}
+
+/* ---------- variabile Discord (vechi + noi) ---------- */
+.theme-dark,
+.theme-darker,
+.theme-light {
+  --brand-experiment: var(--cg-blood);
+  --brand-500: var(--cg-blood);
+  --brand-560: #b3122f;
+  --brand-600: var(--cg-crimson);
+  --text-brand: #ff4d6d;
+  --text-link: #ff6b84;
+  --header-primary: #f7e4e8;
+  --header-secondary: var(--cg-dim);
+  --text-normal: var(--cg-rose);
+  --text-muted: var(--cg-dim);
+  --interactive-normal: #c98b97;
+  --interactive-hover: #ffd9df;
+  --interactive-active: #fff;
+  --channels-default: var(--cg-dim);
+
+  --background-primary: transparent;
+  --background-secondary: transparent;
+  --background-secondary-alt: transparent;
+  --background-tertiary: transparent;
+  --background-floating: var(--cg-panel-solid);
+  --background-accent: rgba(212, 22, 60, 0.18);
+  --background-modifier-hover: rgba(212, 22, 60, 0.10);
+  --background-modifier-selected: rgba(212, 22, 60, 0.22);
+  --background-modifier-active: rgba(212, 22, 60, 0.28);
+  --background-modifier-accent: var(--cg-line);
+  --chat-background: transparent;
+  --channeltextarea-background: rgba(8, 2, 4, 0.78);
+  --scrollbar-thin-thumb: var(--cg-crimson);
+  --scrollbar-auto-thumb: var(--cg-crimson);
+  --scrollbar-auto-track: transparent;
+
+  /* variabilele mai noi */
+  --background-base-lowest: transparent;
+  --background-base-lower: transparent;
+  --background-base-low: transparent;
+  --background-surface-high: var(--cg-panel-solid);
+  --chat-background-default: transparent;
+  --bg-overlay-chat: transparent;
+  --bg-overlay-1: transparent;
+  --bg-overlay-2: transparent;
+  --bg-overlay-3: transparent;
+  --bg-overlay-app-frame: transparent;
+}
+
+/* ---------- fundalul principal ---------- */
+html,
+body,
+#app-mount {
+  background-color: var(--cg-ink) !important;
+}
+
+html {
+  background: var(--cg-ink) !important;
+}
+
+body,
+#app-mount,
+#app-mount > div,
+[class*="appMount"],
+[class*="app_"],
+[class*="bg__"],
+[class*="layers_"],
+[class*="layer_"]:not([class*="layerContainer"]),
+[class*="base_"],
+[class*="content_"][class*="flex"],
+[class*="appAsidePanelWrapper_"] {
+  background: transparent !important;
+}
+
+/* imaginea sta fixa in spatele intregii aplicatii */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(8, 2, 4, 0.40) 0%, rgba(8, 2, 4, 0) 50%, rgba(8, 2, 4, 0.10) 100%),
+    var(--cg-bg-image) center right / cover no-repeat;
+  filter: brightness(0.8) saturate(1.15);
+}
+
+/* ---------- panouri principale ---------- */
+[class*="sidebar_"],
+[class*="sidebarList_"],
+[class*="membersWrap_"],
+[class*="chatContent_"],
+[class*="container_"][class*="privateChannels"],
+nav[aria-label*="Servers"],
+nav[aria-label*="Servere"] {
+  background: var(--cg-panel) !important;
+  backdrop-filter: blur(6px) saturate(1.15);
+  border: 1px solid var(--cg-line) !important;
+  border-radius: var(--cg-radius);
+}
+
+/* chat-ul lasa imaginea sa se vada mai mult */
+[class*="chatContent_"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+[class*="members_"] {
+  background: transparent !important;
+}
+
+/* bara de sus */
+[class*="title_"][class*="container"],
+[class*="chat_"] > [class*="subtitleContainer_"],
+section[class*="title_"] {
+  background: rgba(8, 2, 4, 0.55) !important;
+  border-bottom: 1px solid var(--cg-line) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- header-ul serverului cu fontul gotic ---------- */
+[class*="header_"][class*="bannerVisible"] [class*="headerContent_"],
+[class*="sidebar_"] [class*="header_"] h2 {
+  font-family: "Pirata One", "gg sans", sans-serif !important;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+/* ---------- canale ---------- */
+[class*="containerDefault_"] [class*="name_"],
+[class*="channel_"] [class*="name_"] {
+  transition: color 0.15s;
+}
+
+[class*="categoryHeader"] [class*="name_"],
+[class*="containerDefault_"] > [class*="mainContent_"] [class*="name_"] {
+  color: var(--cg-blood) !important;
+  letter-spacing: 0.08em;
+}
+
+[class*="modeSelected_"] {
+  background: linear-gradient(90deg, rgba(212, 22, 60, 0.30), rgba(212, 22, 60, 0.06)) !important;
+  box-shadow: inset 3px 0 0 var(--cg-blood), var(--cg-glow);
+  border-radius: 10px !important;
+}
+
+[class*="modeSelected_"] [class*="name_"] {
+  color: #fff !important;
+}
+
+[class*="wrapper_"][class*="modeUnread"] [class*="name_"],
+[class*="modeUnread_"] [class*="name_"] {
+  color: #ffd9df !important;
+}
+
+/* iconita # in rosu */
+[class*="icon_"][class*="iconBase"],
+[class*="linkTop_"] svg,
+[class*="iconContainer_"] svg {
+  color: var(--cg-blood);
+}
+
+/* ---------- badge-uri / mentiuni ---------- */
+[class*="numberBadge_"],
+[class*="lowerBadge_"] [class*="numberBadge_"] {
+  background: var(--cg-blood) !important;
+  color: #fff !important;
+  box-shadow: var(--cg-glow);
+}
+
+[class*="unreadMentionsBar"] {
+  background: var(--cg-blood) !important;
+}
+
+/* ---------- lista de servere ---------- */
+[class*="listItem_"] [class*="wrapper_"] [class*="svg_"],
+[class*="listItem_"] [class*="icon_"][class*="selected"] {
+  border-radius: 50% !important;
+}
+
+[class*="pill_"] [class*="item_"] {
+  background: var(--cg-blood) !important;
+  box-shadow: var(--cg-glow);
+}
+
+[class*="selected_"] > [class*="wrapper_"] {
+  box-shadow: 0 0 0 2px var(--cg-blood), var(--cg-glow);
+  border-radius: 50%;
+}
+
+/* ---------- mesaje ---------- */
+[class*="messageListItem_"] [class*="message_"]:hover {
+  background: rgba(212, 22, 60, 0.07) !important;
+}
+
+[class*="username_"],
+[class*="roleDot_"] ~ [class*="username_"] {
+  font-weight: 600;
+}
+
+[class*="timestamp_"] {
+  color: var(--cg-dim) !important;
+}
+
+[class*="mentioned_"] {
+  background: rgba(212, 22, 60, 0.14) !important;
+  box-shadow: inset 3px 0 0 var(--cg-blood);
+}
+
+[class*="mention_"][class*="wrapper"],
+.mention {
+  background: rgba(212, 22, 60, 0.25) !important;
+  color: #ffd9df !important;
+  border-radius: 6px;
+}
+
+/* ---------- caseta de mesaj ---------- */
+[class*="channelTextArea_"] {
+  background: rgba(8, 2, 4, 0.78) !important;
+  border: 1px solid var(--cg-line) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--cg-glow);
+}
+
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+  background: transparent !important;
+  border-radius: 999px !important;
+}
+
+[class*="channelTextArea_"] svg {
+  color: var(--cg-blood);
+}
+
+/* ---------- lista de membri ---------- */
+[class*="membersGroup_"],
+h3[class*="membersGroup_"] {
+  color: var(--cg-blood) !important;
+  letter-spacing: 0.08em;
+}
+
+[class*="member_"]:hover [class*="layout_"] {
+  background: rgba(212, 22, 60, 0.12) !important;
+  border-radius: 10px;
+}
+
+/* ---------- panoul user-ului din stanga jos ---------- */
+[class*="panels_"] > [class*="container_"],
+section[class*="panels_"] {
+  background: var(--cg-panel) !important;
+  border: 1px solid var(--cg-line);
+  border-radius: var(--cg-radius);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- popouts, meniuri, modale ---------- */
+[class*="menu_"],
+[class*="popout_"],
+[class*="layer_"] [class*="container_"][class*="theme"],
+[class*="modal_"],
+[class*="tooltip_"] {
+  background: var(--cg-panel-solid) !important;
+  border: 1px solid var(--cg-line) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), var(--cg-glow) !important;
+}
+
+[class*="item_"][class*="focused"],
+[class*="menu_"] [class*="focused_"] {
+  background: var(--cg-blood) !important;
+  color: #fff !important;
+}
+
+/* ---------- butoane ---------- */
+[class*="lookFilled_"][class*="colorBrand_"] {
+  background: var(--cg-blood) !important;
+}
+
+[class*="lookFilled_"][class*="colorBrand_"]:hover {
+  background: #ee2a52 !important;
+  box-shadow: var(--cg-glow);
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--cg-crimson), var(--cg-blood));
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ---------- selectie text ---------- */
+::selection {
+  background: var(--cg-blood);
+  color: #fff;
+}
+
+/* ---------- accesibilitate ---------- */
+:focus-visible {
+  outline: 2px solid #ff6b84 !important;
+  outline-offset: 2px;
+}
